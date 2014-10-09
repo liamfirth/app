@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::group(array('prefix' => 'api/v1'), function()
+{
+	Route::get('assets/latest', 'AssetController@latest');
+	Route::resource('users', 'UserController');
+	Route::resource('assets', 'AssetController');
+});
